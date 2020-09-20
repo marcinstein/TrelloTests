@@ -4,12 +4,14 @@ import base.BaseTest;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
+import utils.Utils;
 
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OrganizationTest extends BaseTest {
     private static String teamId;
+    Utils utils=new Utils();
 
     @Test
     /// Create new organization with all valid fields
@@ -36,13 +38,7 @@ public class OrganizationTest extends BaseTest {
        assertThat(json.getString("website")).isEqualTo("https://abc.test.abc");
 
         teamId = json.get("id");
-
-        given()
-                .spec(reqSpec)
-                .when()
-                .delete(BASE_URL + "/" + ORGANIZATIONS + "/" + teamId)
-                .then()
-                .statusCode(200);
+        utils.deleteElement(ORGANIZATIONS,teamId);
 
     }
 
@@ -66,14 +62,7 @@ public class OrganizationTest extends BaseTest {
         assertThat(json.getString("website")).isNullOrEmpty();
 
         teamId = json.get("id");
-
-        given()
-                .spec(reqSpec)
-                .when()
-                .delete(BASE_URL + "/" + ORGANIZATIONS + "/" + teamId)
-                .then()
-                .statusCode(200);
-
+        utils.deleteElement(ORGANIZATIONS,teamId);
     }
 
     @Test
@@ -116,13 +105,6 @@ public class OrganizationTest extends BaseTest {
         assertThat(json.getString("website")).isEqualTo("http://not.started.with.http");
 
         teamId = json.get("id");
-
-        given()
-                .spec(reqSpec)
-                .when()
-                .delete(BASE_URL + "/" + ORGANIZATIONS + "/" + teamId)
-                .then()
-                .statusCode(200);
-
+        utils.deleteElement(ORGANIZATIONS,teamId);
     }
 }
