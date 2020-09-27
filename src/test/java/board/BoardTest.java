@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.*;
 
 public class BoardTest extends BaseTest {
     private static String boardId;
-    Utils utils=new Utils();
 
     @Test
     public void createNewBoard(){
@@ -33,7 +32,7 @@ public class BoardTest extends BaseTest {
 
         boardId = json.get("id");
 
-        utils.deleteElement(BOARDS,boardId);
+        Utils.deleteElement(BOARDS,boardId);
     }
 
     @Test
@@ -82,7 +81,7 @@ public class BoardTest extends BaseTest {
         assertThat(idList.size()).isEqualTo(0);
         assertThat(idList).hasSize(0);
 
-        utils.deleteElement(BOARDS,boardId);
+        Utils.deleteElement(BOARDS,boardId);
     }
 
     @Test
@@ -117,6 +116,6 @@ public class BoardTest extends BaseTest {
 
         assertThat(nameList).hasSize(3).contains("To Do", "Doing", "Done");
 
-        utils.deleteElement(BOARDS,boardId);
+        Utils.deleteElement(BOARDS,boardId);
     }
 }

@@ -6,7 +6,7 @@ import static io.restassured.RestAssured.given;
 
 public class Utils extends BaseTest {
 
-    public void deleteElement(String element, String id){
+    public static void deleteElement(String element, String id){
         given()
                 .spec(reqSpec)
                 .when()
